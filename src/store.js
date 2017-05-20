@@ -1,27 +1,27 @@
 import {createStore, applyMiddleware} from 'redux';
 import reducers from './reducer';
 import thunk from 'redux-thunk';
+import axios from 'axios';
 
 const Store = createStore(reducers, applyMiddleware(thunk));
 
-/*Store.dispatch(dispatch => {
+Store.dispatch(dispatch => {
     dispatch({
-        type: FETCH_PRODUCT_START
+        type: 'FETCH_PRODUCTS_START'
     });
-    getProducts(
-        (data) => {
+    axios.get('./src/store_items.json')
+        .then(resp => {
             dispatch({
-                type: 'INIT_PRODUCT',
-                products: data
+                type: 'INIT_PRODUCTS',
+                payload: resp.data
             });
-        },
-        (err) => {
+        })
+        .catch(error => {
             dispatch({
-                type: FETCH_PRODUCT_FAILED,
-                error: err
-            })
-        }
-    );
-});*/
+                type: 'FETCH_PRODUCTS_FAILED',
+                payload: resp.error
+            });
+        });
+});
 
 export default Store;

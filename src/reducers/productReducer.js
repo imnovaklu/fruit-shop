@@ -8,18 +8,18 @@ const initState = {
 const productReducer = (state = initState, action) => {
     var newState = {...state};
     switch (action.type) {
-        case 'INIT_PRODUCT':
-            newState.products = action.products;
+        case 'INIT_PRODUCTS':
+            newState.products = action.payload;
             newState.fetching = false;
             newState.fetched = true;
             return newState;
-        case 'FETCH_PRODUCT_START':
+        case 'FETCH_PRODUCTS_START':
             newState.fetching = true;
             return newState;
-        case 'FETCH_PRODUCT_FAILED':
+        case 'FETCH_PRODUCTS_FAILED':
             newState.fetching = false;
             newState.fetched = false;
-            newState.error = action.error;
+            newState.error = action.payload;
             return newState;
     }
     return newState;

@@ -7,17 +7,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.less';
 
 class App extends Component{
+    constructor(props){
+        super(props);
+    }
+
     render(){
+        const {product} = Store.getState();
+        console.log(product);
+
         return (
             <div>
                 <Header/>
                 <div className="fruit-container">
                     <div className="row">
                         <div className="col-lg-9 col-md-9">
-                            <Product/>
-                            <Product/>
-                            <Product/>
-                            <Product/>
+                            <div className="row">
+                                {product.products.map((item, index)=> (
+                                    <Product name={item.itemName} price={item.price} imgsrc={item.imgSrc} quantity={item.quantityRemaining} key={index}/>
+                                ))}
+                            </div>
                         </div>
                         <div className="col-lg-3 col-md-3 checkout">
                             <h4>Shopping Cart</h4>
