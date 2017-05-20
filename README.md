@@ -1,5 +1,5 @@
-# Shopping Website
-Developed using React + Redux + NodeJS + MongoDB
+# Fruit Shop
+Developed using React + Redux + NodeJS
 1. Input <code>npm install -g webpack</code> first
 2. Input <code>npm install</code> to install all dependencies
 3. Input <code>npm run build</code> to compile and bundle files
