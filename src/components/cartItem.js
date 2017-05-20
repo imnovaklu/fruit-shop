@@ -13,9 +13,9 @@ class CartItem extends Component{
             <div className="cart-item">
                 <div>
                     <img src={imgsrc}/>
-                    <button>-</button>
+                    <button className="">-</button>
                     <span className="quantity">{quantity}</span>
-                    <button>+</button>
+                    <button className="">+</button>
                 </div>
                 <div>
                     <span>{`@ $${price}each = $${price*quantity}`}</span>
