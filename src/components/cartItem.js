@@ -9,6 +9,7 @@ class CartItem extends Component{
 
 
 
+
     _increment_btn(e){
         const elem = e.target;
         Store.dispatch({
@@ -17,6 +18,15 @@ class CartItem extends Component{
                 name: elem.getAttribute('data-name'),
                 price: parseFloat(elem.getAttribute('data-price')),
                 imgSrc: elem.getAttribute('data-imgSrc'),
+            }
+        })
+    }
+
+    _delete(e){
+        Store.dispatch({
+            type: 'DELETE_FROM_CART',
+            payload: {
+                name: e.target.getAttribute('data-name')
 
             }
         })
@@ -35,7 +45,7 @@ class CartItem extends Component{
                 </div>
                 <div>
                     <span>{`@ $${price}each = $${price*quantity}`}</span>
-                    <span title="delete" className="pull-right text-delete">Delete</span>
+                    <span title="delete" className="pull-right text-delete" data-name={name} onClick={this._delete}>Delete</span>
                 </div>
             </div>
         )

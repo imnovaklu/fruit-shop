@@ -7,7 +7,6 @@ const productReducer = (state = initState, action) => {
     var newState = {...state};
     switch (action.type) {
         case 'ADD_TO_CART':
-            console.log('received');
             let hasItem = false;
             for (let item of newState.products) {
                 if (item.name === action.payload.name) {
@@ -21,7 +20,15 @@ const productReducer = (state = initState, action) => {
                 newState.products.push(action.payload);
                 newState.total += action.payload.price;
             }
-            console.log(newState);
+            return newState;
+        case 'DELETE_FROM_CART':
+            const len = newState.products.length;
+            for (let i = 0; i < len; i++){
+                if(newState.products[i].name === action.payload.name){
+                    newState.products.splice(i,1);
+                    break;
+                }
+            }
             return newState;
 
         case 'INCREMENT':
