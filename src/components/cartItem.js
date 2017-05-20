@@ -5,28 +5,26 @@ import './cartItem.less';
 class CartItem extends Component{
     constructor(props){
         super(props);
+        this._increment_btn = this._increment_btn.bind(this);
+        this._delete = this._delete.bind(this);
     }
 
-
-
-
-    _increment_btn(e){
-        const elem = e.target;
+    _increment_btn(){
+        const {name, price} = this.props;
         Store.dispatch({
             type: 'INCREMENT',
             payload: {
-                name: elem.getAttribute('data-name'),
-                price: parseFloat(elem.getAttribute('data-price')),
-                imgSrc: elem.getAttribute('data-imgSrc'),
+                name: name,
+                price: price
             }
         })
     }
 
-    _delete(e){
+    _delete(){
         Store.dispatch({
             type: 'DELETE_FROM_CART',
             payload: {
-                name: e.target.getAttribute('data-name')
+                name: this.props.name
 
             }
         })
@@ -45,7 +43,7 @@ class CartItem extends Component{
                 </div>
                 <div>
                     <span>{`@ $${price}each = $${price*quantity}`}</span>
-                    <span title="delete" className="pull-right text-delete" data-name={name} onClick={this._delete}>Delete</span>
+                    <span title="delete" className="pull-right text-delete" onClick={this._delete}>Delete</span>
                 </div>
             </div>
         )

@@ -30,24 +30,14 @@ const productReducer = (state = initState, action) => {
                 }
             }
             return newState;
-
         case 'INCREMENT':
-        console.log('received');
-            // let hasItem = false;
-            for(let item of newState.products) {
+            for (let item of newState.products) {
                 if (item.name === action.payload.name) {
                     item.quantity++;
                     newState.total += action.payload.price;
-                    hasItem = true;
                     break;
                 }
             }
-            if(!hasItem){
-                console.log(newState.products);
-                newState.products.push(action.payload);
-                newState.total += action.payload.price;
-            }
-            console.log(newState);
             return newState;
     }
 
