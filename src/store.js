@@ -9,7 +9,7 @@ Store.dispatch(dispatch => {
     dispatch({
         type: 'FETCH_PRODUCTS_START'
     });
-    axios.get('./src/store_items.json')
+    axios.get('./products')
         .then(resp => {
             dispatch({
                 type: 'INIT_PRODUCTS',
