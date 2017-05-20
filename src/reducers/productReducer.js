@@ -9,11 +9,24 @@ const initState = {
 
 initState.search_results = [...initState.products];
 
+const productGenerator = (name = '', directory = '', price = 0, discount = 0, amount = 0, colors = [], description = '', imgUrl = 'null.png') => {
+    return {
+        name: name,
+        directory: directory,
+        price: price,
+        discount: discount,
+        amount: amount,
+        color: color,
+        imgUrl: imgUrl,
+        description: description
+    }
+};
+
 const productReducer = (state = initState, action) => {
     var newState = {...state};
     switch (action.type) {
         case ADD_PRODUCT:
-            newState.selectedBrand = newState.brands[action.index - 1].name;
+            newState.products.push(productGenerator());
             return newState;
         case DELETE_PRODUCT:
             newState.selectedModel = newState.brands.find(item=>item.name == newState.selectedBrand).model[action.index - 1];

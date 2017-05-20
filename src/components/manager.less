@@ -7,7 +7,7 @@ thead{
   }
 }
 
-td {
+tbody td {
   vertical-align: middle !important;
   color: @purple;
   input{
@@ -20,7 +20,7 @@ td {
 }
 
 .reduced-width{
-  max-width: 120px;
+  width: 120px;
 }
 
 .table-hover{
@@ -31,10 +31,26 @@ td {
       }
     }
   }
+  tfoot{
+    >tr{
+      text-align: center;
+    }
+  }
 }
 
 .table-theme{
   input[type="text"]{
     .input-gold(@purple, @gold, 28px);
+  }
+  .btn-gold{
+    width: 200px;
+    &:after{
+      .btn-after(5px, 190px, 20px, @purple);
+    }
+    &:hover{
+      &:after{
+        .btn-after(-5px, 210px, 40px, @purple);
+      }
+    }
   }
 }

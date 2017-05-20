@@ -47,7 +47,6 @@ class Login extends Component {
         let {loginStyle} = style;
         let closeBtnText = loginStyle == "login-opened"? ">": "<";
         let isLogin = JSON.stringify(user.loginUser) != "{}";
-        console.log(isLogin);
 
         return (
             <div className={`login-container ${loginStyle}`}>
