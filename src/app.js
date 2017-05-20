@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Store from './store';
 import Header from './components/header';
 import Product from './components/product';
+import CartItem from './components/cartItem';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.less';
 
@@ -12,8 +13,7 @@ class App extends Component{
     }
 
     render(){
-        const {product} = Store.getState();
-        console.log(product);
+        const {product, cart} = Store.getState();
 
         return (
             <div>
@@ -31,7 +31,9 @@ class App extends Component{
                             <h4>Shopping Cart</h4>
                             <span>2 items</span>
                             <div className="cart-container">
-
+                                {cart.products.map((item, index) => (
+                                    <CartItem name={item.name} price={item.price} quantity={item.quantity} imgsrc={item.imgsrc} key={index}/>
+                                ))}
                             </div>
                             <div className="checkout-container">
 
