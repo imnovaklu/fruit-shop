@@ -4,7 +4,7 @@ body{
 
 @theme-green: #3bffbf;
 
-.them-btn(@backgroundColor, @color, @width, @height){
+.theme-btn(@backgroundColor, @color, @width, @height){
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -15,11 +15,15 @@ body{
     color: @color;
     border-radius: 3px;
     border: 0;
+    overflow: hidden;
     line-height: @height;
     .transition(all,.3s);
     &:hover{
         background: white;
         color: @theme-green;
+    }
+    &:active{
+        outline: none;
     }
 }
 

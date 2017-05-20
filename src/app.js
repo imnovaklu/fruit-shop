@@ -12,6 +12,12 @@ class App extends Component{
         super(props);
     }
 
+    _empty_cart(){
+        Store.dispatch({
+            type: 'EMPTY_CART'
+        })
+    }
+
     render(){
         const {product, cart} = Store.getState();
 
@@ -36,7 +42,9 @@ class App extends Component{
                                 ))}
                             </div>
                             <div className="checkout-container">
-
+                                <span style={{display: "block"}}>{`Total: $${cart.total}`}</span>
+                                <p onClick={this._empty_cart}>Empty Cart</p>
+                                <button className="btn-confirm">Confirm Purchase</button>
                             </div>
                         </div>
                     </div>

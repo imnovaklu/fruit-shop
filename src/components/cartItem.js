@@ -15,7 +15,7 @@ class CartItem extends Component{
             type: 'INCREMENT',
             payload: {
                 name: name,
-                price: price
+                price: parseFloat(price)
             }
         })
     }
@@ -25,13 +25,12 @@ class CartItem extends Component{
             type: 'DELETE_FROM_CART',
             payload: {
                 name: this.props.name
-
             }
         })
     }
 
     render(){
-        let {imgsrc, name, price, quantity} = this.props;
+        let {imgsrc, price, quantity} = this.props;
 
         return (
             <div className="cart-item">
@@ -42,7 +41,7 @@ class CartItem extends Component{
                     <button className="" onClick={this._increment_btn}>+</button>
                 </div>
                 <div>
-                    <span>{`@ $${price}each = $${price*quantity}`}</span>
+                    <span>{`@ $${price}each = $${(price*quantity).toFixed(2)}`}</span>
                     <span title="delete" className="pull-right text-delete" onClick={this._delete}>Delete</span>
                 </div>
             </div>
