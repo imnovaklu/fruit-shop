@@ -1,77 +1,44 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Store from './store';
-import {UIRouter, UIView, pushStateLocationPlugin} from 'ui-router-react';
-import { getDetails, getProducts } from './ajax/productAJAX';
 import Header from './components/header';
-import Login from './components/login';
-import Women from './components/women';
-import Girls from './components/girls';
-import Kids from './components/kids';
-import Details from './components/details';
-import Manage from './components/manage';
+import Product from './components/product';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.css';
+import './app.less';
 
-const womenState = {
-        name: 'women',
-        url: '/women',
-        component: Women
-    },
-    girlsState = {
-        name: 'girls',
-        url: '/girls',
-        component: Girls
-    },
-    kidsState = {
-        name: 'kids',
-        url: '/kids',
-        component: Kids
-    },
-    detailsState = {
-        name: 'details',
-        url: '/details/:directory/:productId',
-        component: Details,
-        resolve: [{
-            token: 'detailsState',
-            deps: ['$transition$'],
-            resolveFn: (trans) => {
-                //return getDetails(trans.params().directory, trans.params().productId);
-                return {
-                    directory: trans.params().directory,
-                    productId: trans.params().productId
-                }
-            }
-        }]
-    },
-    manageState = {
-        name: 'manage',
-        url: '/manage',
-        component: Manage,
-        resolve: [{
-            token: 'manageState',
-            deps: ['$transition$'],
-            resolveFn: () => {
-                return {test: "name"};
-            }
-        }]
-    };
-
-const App = () => {
-    return (
-        <UIRouter plugins={[pushStateLocationPlugin]} states={[womenState, girlsState, kidsState, detailsState, manageState]}>
+class App extends Component{
+    render(){
+        return (
             <div>
-                <Login/>
                 <Header/>
-                <UIView/>
+                <div className="fruit-container">
+                    <div className="row">
+                        <div className="col-lg-9 col-md-9">
+                            <Product/>
+                            <Product/>
+                            <Product/>
+                            <Product/>
+                        </div>
+                        <div className="col-lg-3 col-md-3 checkout">
+                            <h4>Shopping Cart</h4>
+                            <span>2 items</span>
+                            <div className="cart-container">
+
+                            </div>
+                            <div className="checkout-container">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </UIRouter>
-    )
-};
+        )
+    }
+}
 
 const app = document.getElementById('root');
 const renderDOM = () => {
-    ReactDOM.render( App(), app);
+    ReactDOM.render( <App/>, app);
 };
 
 renderDOM();

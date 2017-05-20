@@ -1,12 +1,10 @@
 import {createStore, applyMiddleware} from 'redux';
 import reducers from './reducer';
-import { getProducts } from './ajax/productAJAX';
 import thunk from 'redux-thunk';
-import {FETCH_PRODUCT_START, FETCH_PRODUCT_FAILED} from './constants/actionTypes';
 
 const Store = createStore(reducers, applyMiddleware(thunk));
 
-Store.dispatch(dispatch => {
+/*Store.dispatch(dispatch => {
     dispatch({
         type: FETCH_PRODUCT_START
     });
@@ -24,6 +22,6 @@ Store.dispatch(dispatch => {
             })
         }
     );
-});
+});*/
 
 export default Store;
