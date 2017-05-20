@@ -35,7 +35,7 @@ class CartItem extends Component{
                 </div>
                 <div>
                     <span>{`@ $${price}each = $${price*quantity}`}</span>
-                    <span>Delete</span>
+                    <span title="delete" className="pull-right text-delete">Delete</span>
                 </div>
             </div>
         )
